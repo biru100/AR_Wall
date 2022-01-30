@@ -10,13 +10,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.device-simulator": {
-      "version": "3.0.3-preview",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.editorcoroutines": {
       "version": "1.0.0",
       "depth": 1,
@@ -75,7 +68,7 @@
     },
     "com.unity.nuget.newtonsoft-json": {
       "version": "2.0.0",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -209,12 +202,12 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.arkit": {
-      "version": "4.1.7",
+      "version": "4.1.9",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.editorcoroutines": "1.0.0",
-        "com.unity.xr.arsubsystems": "4.1.7",
+        "com.unity.xr.arsubsystems": "4.1.9",
         "com.unity.xr.management": "4.0.1"
       },
       "url": "https://packages.unity.com"
@@ -248,7 +241,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.magicleap": {
-      "version": "6.2.2",
+      "version": "6.4.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -258,12 +251,12 @@
         "com.unity.ugui": "1.0.0",
         "com.unity.xr.arsubsystems": "4.0.12",
         "com.unity.xr.interactionsubsystems": "1.0.1",
-        "com.unity.xr.management": "4.0.1"
+        "com.unity.xr.management": "4.0.7"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.management": {
-      "version": "4.2.0",
+      "version": "4.2.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -276,7 +269,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.windowsmr": {
-      "version": "4.6.1",
+      "version": "4.6.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {

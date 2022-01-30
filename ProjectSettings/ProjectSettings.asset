@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 22
-  productGUID: 0f85188de13ac514e9c13d601146f9d8
+  productGUID: ee699a5be1c53744f8c1ad70d1a72594
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: ChungKang
-  productName: Museum R
+  companyName: DefaultCompany
+  productName: AR_Wall_Project
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -153,8 +153,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.ChungKang.MuseumR
-    Standalone: com.ChungKang.MuseumR
+    Android: com.DefaultCompany.AR_Wall_Project
   buildNumber:
     Standalone: 0
     iPhone: 0
