@@ -12,25 +12,42 @@ public class AR_Object : MonoBehaviour
     GameObject infoPanel;
     [SerializeField]
     VideoPlayer videoPlayer;
-
+    [SerializeField]
+    Button videoButton;
+    [SerializeField]
+    Button imageButton;
+    [SerializeField]
     Canvas canvas;
+    [SerializeField]
+    Sprite sprite2d;
     RawImage videoImage;
+    Image image2d;
 
     private void Start()
     {
         canvas.worldCamera = Camera.main;
-        videoImage = GameObject.Find("VideoImage").GetComponent<RawImage>();
+        videoImage = GameManager.instance.videoimage;
+        image2d = GameManager.instance.resource2d;
+        image2d.sprite = sprite2d;
+        videoImage.texture = videoPlayer.targetTexture;
+        videoButton.onClick.AddListener(videoOnClick);
+        imageButton.onClick.AddListener(imageOnClick);
     }
 
-    public void SelectInfo()
+    public void SelectInfo(bool check)
     {
-        infoPanel.SetActive(true);
-        menuPanel.SetActive(false);
+        infoPanel.SetActive(check);
+        menuPanel.SetActive(!check);
     }
 
-    public void BackInfo()
+    void videoOnClick()
     {
-        infoPanel.SetActive(false);
-        menuPanel.SetActive(true);
+        GameManager.instance.SelectVideo(true);
     }
+
+    void imageOnClick()
+    {
+        GameManager.instance.SelectImage(true);
+    }
+    
 }

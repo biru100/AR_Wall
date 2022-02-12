@@ -1,24 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    GameObject menuPanel;
-    [SerializeField]
-    GameObject infoPanel;
+    public static GameManager instance;
 
+    [SerializeField]
+    GameObject videoPanel;
+    [SerializeField]
+    RawImage videoImage;
+    [SerializeField]
+    GameObject imagePanel;
+    [SerializeField]
+    Image resource2D;
+    
 
-    public void SelectInfo()
+    public RawImage videoimage { get => videoImage; }
+    public Image resource2d { get => resource2D; }
+
+    private void Awake()
     {
-        infoPanel.SetActive(true);
-        menuPanel.SetActive(false);
+        instance = this;
     }
 
-    public void BackInfo()
+    public void SelectVideo(bool check)
     {
-        infoPanel.SetActive(false);
-        menuPanel.SetActive(true);
+        videoPanel.SetActive(check);
+    }
+
+    public void SelectImage(bool check)
+    {
+        imagePanel.SetActive(check);
     }
 }
