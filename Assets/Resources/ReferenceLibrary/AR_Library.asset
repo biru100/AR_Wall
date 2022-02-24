@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: AR_Library
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5139387883480765973
+  m_GuidHigh: 3616682263267850117
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5099321263655953177
+      m_GuidHigh: 2086830949040238003
+    m_SerializedTextureGuid:
+      m_GuidLow: 13849919573540705348
+      m_GuidHigh: 15844567807180681257
+    m_Size: {x: 15, y: 21.085499}
+    m_SpecifySize: 1
+    m_Name: Image_001
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5624920131929097984
+      m_GuidHigh: 6661362267531034019
+    m_SerializedTextureGuid:
+      m_GuidLow: 4441873569056905424
+      m_GuidHigh: 4492448185929500025
+    m_Size: {x: 15, y: 21.085499}
+    m_SpecifySize: 1
+    m_Name: Image_002
+    m_Texture: {fileID: 0}

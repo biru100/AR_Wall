@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject imagePanel;
     [SerializeField]
+    GameObject ExitPanel;
+    [SerializeField]
     Image resource2D;
     
 
@@ -23,6 +25,26 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            ExitPanel.SetActive(!ExitPanel.activeSelf);
+        }
+    }
+
+    public void Exit(bool check)
+    {
+        if(check)
+        {
+            Application.Quit();
+        }
+        else
+        {
+            ExitPanel.SetActive(false);
+        }
     }
 
     public void SelectVideo(bool check)
