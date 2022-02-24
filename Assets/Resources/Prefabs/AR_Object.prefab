@@ -283,6 +283,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 7357122614663925687}
   titleText: {fileID: 1394317254069948430}
+  descriptionText: {fileID: 3701484032212632766}
+  videoImage: {fileID: 3138051501590152029}
 --- !u!328 &2287725485014255473
 VideoPlayer:
   m_ObjectHideFlags: 0

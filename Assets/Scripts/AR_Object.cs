@@ -13,14 +13,32 @@ public class AR_Object : MonoBehaviour
     [SerializeField]
     Text titleText;
 
+    [SerializeField]
+    Text descriptionText;
+
+    [SerializeField]
+    GameObject videoImage;
+
+    VideoPlayer player;
     private void Start()
     {
         canvas.worldCamera = Camera.main;
+        player = GetComponent<VideoPlayer>();
     }
 
-    public void SetTitle(string str)
+    public void SetData(ARdata data)
     {
-        titleText.text = str;
+        titleText.text = data.title + "\n- " + name;
+        descriptionText.text = data.description;
+        if(data.clip != null)
+        {
+            videoImage.SetActive(true);
+            player.clip = data.clip;
+        }
+        else
+        {
+            videoImage.SetActive(false);
+        }
     }
 
 

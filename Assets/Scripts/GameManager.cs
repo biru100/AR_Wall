@@ -67,17 +67,12 @@ public class GameManager : MonoBehaviour
             {
                 if(!activeCheck)
                 {
-                    Debug.Log("¿¡·¯");
                     activeCheck = true;
                     for(int i = 0; i < AR_Data.instance.list.Length; i++)
                     {
-                        Debug.Log(updatedImage.referenceImage.name);
-                        Debug.Log(AR_Data.instance.list[i].ID);
                         if (updatedImage.referenceImage.name == AR_Data.instance.list[i].ID)
                         {
-                            ARdata data = AR_Data.instance.list[i];
-                            trackedObject.SetTitle(data.title);
-                            Debug.Log(data.title);
+                            trackedObject.SetData(AR_Data.instance.list[i]);
                             break;
                         }
                     }
