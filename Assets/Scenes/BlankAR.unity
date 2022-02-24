@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2407,60 +2407,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559570733}
   m_CullTransparentMesh: 1
---- !u!1 &1576505931
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1576505933}
-  - component: {fileID: 1576505932}
-  m_Layer: 0
-  m_Name: AR_Data
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1576505932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576505931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2900e7cff2f83f5459193d11be2c694f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  List:
-  - ID: Image_001
-    title: "\uC73C\uC5B4\uC559\uD5C8\uC544\u314F\uC5C9"
-    name: "\u3141\u3147\u3134\u3147\u313B\u3134"
-    description: "\u3134\u3147\u3141\u3139\u3134\u3147\u3139\u3134\u3141"
-    clip: {fileID: 32900000, guid: d7c4e318df8f78842a920d8ea9b7aac3, type: 3}
-  - ID: Image_002
-    title: asdfasdf
-    name: asdfasdf
-    description: sdfffffsfws
-    clip: {fileID: 0}
---- !u!4 &1576505933
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576505931}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.42, y: 3.7596102, z: -5.2600007}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1659859597
 GameObject:
   m_ObjectHideFlags: 0
@@ -3403,3 +3349,251 @@ PrefabInstance:
       objectReference: {fileID: 1354141926}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a886e31d8661ee34eb01ac19fb70b965, type: 3}
+--- !u!1 &8566291898644657667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8566291898644657669}
+  - component: {fileID: 8566291898644657668}
+  m_Layer: 0
+  m_Name: AR_Data
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &8566291898644657668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8566291898644657667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2900e7cff2f83f5459193d11be2c694f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  List:
+  - ID: Image_001
+    title: "< \uC5EC\uC6B8 \uD53C >"
+    name: "202013025 \uCD5C\uC218\uBE48, 202013108 \uC774\uCC44\uC601, 202013210
+      \uC784\uC5F0\uC8FC"
+    description: "( \uCEA1\uC2A4\uD1A4 \uB514\uC790\uC778 \u2013 \uBE7C\uC557\uAE34
+      \uD130\uC804 ) \uD130\uC804\uC744 \uB418\uCC3E\uAE30 \uC704\uD574 \uC2F8\uC6B0\uB294
+      \uC778\uAC04 \uCE90\uB9AD\uD130"
+    clip: {fileID: 32900000, guid: 9a8b272aaab45524abc5c77202fe5bf7, type: 3}
+    image: {fileID: 0}
+  - ID: Image_002
+    title: "< \uCCB4\uD398\uC288 \uB4DC\uBE4C >"
+    name: "202113176 \uAE40\uBBFC\uC9C0"
+    description: "1\uD559\uB144 1\uD559\uAE30 \uB514\uC9C0\uD138 \uD398\uC778\uD305
+      \uAE30\uCD08 \uC218\uC5C5 \uACFC\uC81C\uBB3C\uB85C \uC81C\uCD9C\uD55C \uCE90\uB9AD\uD130
+      \uC6D0\uD654 \uBC0F \uC2DC\uD2B8 \uC791\uC5C5\uBB3C \uC785\uB2C8\uB2E4.  \u2018\uCCB4\uD398\uC288
+      \uB4DC\uBE4C\u2019\_\uC774\uB77C\uB294 \uC774\uB984\uC758 \uADC0\uC871 \uBC40\uD30C\uC774\uC5B4
+      \uC18C\uB140\uB85C \uD751\uB9C8\uBC95\uC744 \uACF5\uBD80\uD558\uB294 \uB9C8\uBC95\uD559\uC6D0
+      \uD559\uC0DD\uC774\uB77C\uB294 \uCEE8\uC149\uC73C\uB85C \uB514\uC790\uC778
+      \uD558\uC600\uC2B5\uB2C8\uB2E4. 1\uD559\uAE30 \uC791\uC5C5\uBB3C\uC774\uB77C
+      \uBD80\uC871\uD55C \uC810\uC774 \uB9CE\uC774 \uBCF4\uC774\uC9C0\uB9CC \uC5F4\uC2EC\uD788
+      \uC791\uC5C5\uD55C \uB9CC\uD07C \uC7AC\uBC0C\uAC8C \uAC10\uC0C1\uD574\uC8FC\uC138\uC694~"
+    clip: {fileID: 32900000, guid: d7c4e318df8f78842a920d8ea9b7aac3, type: 3}
+    image: {fileID: 0}
+  - ID: Image_003
+    title: "< \uB300\uC7A5\uC7A5\uC774 \uB77C\uBE44 \uD50C\uB808\uC5B4 >"
+    name: "202013011 \uC870\uC608\uC778"
+    description: "\uC6D0\uC778 \uBAA8\uB97C \uB300 \uC7AC\uD574\uB85C \uC778\uD574
+      \uC6D0\uC18C\uC758 \uADE0\uD615\uC774 \uAE68\uC9C4 \uC138\uACC4\uC5D0\uC11C
+      \uBD88\uC758 \uC6D0\uC18C\uAC00 \uD3B8\uC911\uB418\uC5B4 \uC788\uB294 \uC9C0\uC5ED\uC758
+      \uB300\uC7A5\uC7A5\uC774\uC785\uB2C8\uB2E4. \uB77C\uBE44\uB294 \uC6D0\uC18C\uC758
+      \uC601\uD5A5\uC73C\uB85C \uC2E0\uCCB4 \uC77C\uBD80\uC5D0\uC11C \uBD88\uC758
+      \uD2B9\uC9D5\uC774 \uB098\uD0C0\uB0A9\uB2C8\uB2E4."
+    clip: {fileID: 32900000, guid: 843d92563442d6f4986105b19abf6ef8, type: 3}
+    image: {fileID: 0}
+  - ID: Image_004
+    title: < Shogun and Yae >
+    name: "202113221 \uD55C\uC720\uC815"
+    description: "\uAC8C\uC784 \uC6D0\uC2E0\uC5D0 \uB098\uC624\uB294 \uCE90\uB9AD\uD130\uB97C
+      \uADF8\uB824\uBD24\uC2B5\uB2C8\uB2E4. \uC2E0\uC774\uBA74\uC11C \uC624\uB79C
+      \uCE5C\uAD6C\uC778 \uC774 \uB458\uC774 \uC138\uC0C1\uC744 \uB0B4\uB824\uB2E4\uBCF4\uB294
+      \uC7A5\uBA74\uC744 \uC5F0\uCD9C\uD558\uACE0\uC790 \uD588\uC5B4\uC694. \uCE90\uB9AD\uD130\uC758
+      \uC131\uACA9\uC5D0 \uB9DE\uAC8C \uC57C\uC5D0\uB294 \uD765\uBBF8\uB85C\uC6B4
+      \uB208\uBE5B\uC744, \uC1FC\uAD70\uC740 \uBB34\uB150 \uBB34\uC0C1\uD55C \uD45C\uC815\uC744
+      \uC9D3\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
+    clip: {fileID: 0}
+    image: {fileID: 21300000, guid: ba31d2521011d7a4185cb006b795151d, type: 3}
+  - ID: Image_005
+    title: < Nevica >
+    name: "202113095 \uB098\uC778\uC218"
+    description: "\uC601\uD654 \u2018\uACA8\uC6B8\uC655\uAD6D\u2019\uC758 \u2018\uC5D8\uC0AC\u2019\uC5D0
+      \uC601\uAC10\uC744 \uBC1B\uACE0 \uB514\uC790\uC778\uD55C \uCE90\uB9AD\uD130\uC785\uB2C8\uB2E4.
+      \uB208(snow)\uACFC \uC5BC\uC74C\uC744 \uC790\uC720\uB86D\uAC8C \uB2E4\uB8E8\uBA70
+      \uCC28\uAC11\uACE0 \uC2E0\uBE44\uB85C\uC6B4 \uB290\uB08C\uC758 \uC131\uACA9\uC744
+      \uAC00\uC9C4 \uB9C8\uBC95\uC0AC \uCE90\uB9AD\uD130\uB97C \uB9CC\uB4E4\uACE0
+      \uC2F6\uC5C8\uC2B5\uB2C8\uB2E4. \uD310\uD0C0\uC9C0 \uC2DC\uB300, \uC5D8\uD504
+      \uC885\uC871\uC73C\uB85C \uCCB4\uB825\uC740 \uC57D\uD574 \uBCF4\uC774\uC9C0\uB9CC
+      \uB6F0\uC5B4\uB09C \uB9C8\uBC95 \uC0AC\uC6A9\uC73C\uB85C \uC790\uC2E0\uC758
+      \uC885\uC871\uC744 \uC218\uD638\uD558\uB294 \uC5ED\uD560\uC744 \uD569\uB2C8\uB2E4.
+      \uC758\uC0C1\uC744 \uB514\uC790\uC778\uD558\uB294 \uACFC\uC815\uC5D0\uC11C
+      \uC5B4\uB5BB\uAC8C \uD558\uBA74 \uC774 \uCE90\uB9AD\uD130\uAC00 \uB208(snow)\uC758
+      \uB2A5\uB825\uC744 \uAC00\uC84C\uB2E4\uB294 \uAC83\uC744 \uC798 \uD45C\uD604\uD560
+      \uC218 \uC788\uC744\uC9C0\uB97C \uC6B0\uC120\uC21C\uC704\uB85C \uACE0\uBBFC\uD558\uBA70
+      \uC791\uC5C5\uD558\uC600\uC2B5\uB2C8\uB2E4."
+    clip: {fileID: 0}
+    image: {fileID: 21300000, guid: f22accc59b25b0841b2bef07f1ff5aff, type: 3}
+  - ID: Image_006
+    title: < The day of the Devil >
+    name: "202013110 \uAE40\uC778\uC601"
+    description: "\uBA38\uB9AC \uC704\uB85C \uCE7C\uB0A0\uC744 \uC18C\uD658\uD574\uC11C
+      \uC804\uD22C\uD558\uB294 \uC545\uB9C8 \uCEE8\uC149\uC758 \uCE90\uB9AD\uD130
+      \uC6D0\uD654\uC785\uB2C8\uB2E4."
+    clip: {fileID: 0}
+    image: {fileID: 21300000, guid: 83b4313ca0862fd4aaa0cdff6e67199c, type: 3}
+  - ID: Image_007
+    title: < REBELLION >
+    name: "201813046 \uD5C8\uC7AC\uD718"
+    description: "\uD559\uB144 : 2\uD559\uB144 2\uD559\uAE30 / \uAC15\uC758\uBA85
+      : \uAC8C\uC784 \uC77C\uB7EC\uC2A4\uD2B8 / \uAE30\uB9D0 \uACE0\uC0AC"
+    clip: {fileID: 0}
+    image: {fileID: 21300000, guid: 40756aef59ae68243b9cedca805e83ad, type: 3}
+  - ID: Image_008
+    title: < Valkyrie >
+    name: "202113190 \uCC28\uC9C0\uD658"
+    description: "1\uD559\uB144 / \uAC8C\uC784\uCE90\uB9AD\uD130\uCEE8\uC149\uC544\uD2B8\uAE30\uCD08\_\uAE30\uB9D0
+      \uACFC\uC81C\uC785\uB2C8\uB2E4."
+    clip: {fileID: 0}
+    image: {fileID: 21300000, guid: bcbf510c72467f74d9b5d0ca9bc249af, type: 3}
+  - ID: Image_009
+    title: "< \uC9C0\uD558\uB178\uC608 \uD22C\uAE30\uC7A5 >"
+    name: "201813049 \uCD5C\uC2B9\uB77D"
+    description: "\uAC1C\uC778\uC791, \uACFC\uAC70\uC5D0 \uADC0\uC871\uB4E4\uC774
+      \uC5EC\uD765\uC744 \uC704\uD574 \uB178\uC608\uB4E4\uC744 \uB370\uB9AC\uACE0
+      \uC640 \uC2F8\uC6C0\uC744 \uC2DC\uD0A4\uB358 \uACF3 2\uCE35\uC5D0\uC11C \uADC0\uC871\uB4E4\uC774
+      \uBB34\uAE30\uB97C \uB358\uC838\uC8FC\uACE0 \uB178\uC608\uB4E4\uC740 \uADF8
+      \uBB34\uAE30\uB97C \uC8FC\uC6CC\uC11C \uC2F8\uC6B4 \uD6C4 \uC544\uB798 \uC788\uB294
+      \uC0C1\uAE08\uC744 \uAC00\uC838\uAC00\uB294 \uD615\uC2DD\uC758 \uD22C\uAE30\uC7A5 "
+    clip: {fileID: 0}
+    image: {fileID: 21300000, guid: 8934777cea1e2dd4a8628df7b8a738e5, type: 3}
+  - ID: Image_010
+    title: < Sci-fi Room >
+    name: "201813049 \uCD5C\uC2B9\uB77D"
+    description: "(\uCD9C\uCC98-\_Velkin Labs\uC758 \uC791\uD488\uC744 \uCC38\uACE0\uD574\uC11C
+      \uC9C4\uD589\uD588\uC2B5\uB2C8\uB2E4.) 21\uB144 2\uD559\uB144 2\uD559\uAE30
+      3D \uAC8C\uC784 \uBC30\uACBD \uC81C\uC791 \uC2EC\uD654 \uC218\uC5C5\uC758 \uC9C1\uBB34\uC218\uD589\uD3C9\uAC00
+      1 \uACFC\uC81C\uB85C \uC81C\uCD9C\uD588\uB358 \uC791\uC5C5\uBB3C\uC785\uB2C8\uB2E4. 
+      **\uCEE8\uC149 - \uC6B0\uC8FC\uC120\uC758 \uD55C \uC0AC\uBB34\uACF5\uAC04** 
+      ****  - **\uC6B0\uC8FC\uC120\uC73C\uB85C \uC628 \uACFC\uD559\uC790 D**  \uD658\uACBD\uC624\uC5FC\uC73C\uB85C
+      \uD669\uD3D0\uD654\uB41C \uC9C0\uAD6C\uB97C \uB418\uC0B4\uB9AC\uAE30 \uC704\uD574
+      \uC5F0\uAD6C \uC911\uC774\uB2E4.  - **\uC2A4\uD1A0\uB9AC**  \uAC00\uAE4C\uC6B4
+      \uBBF8\uB798\uC5D0 \uC9C0\uAD6C\uB294 \uAE09\uACA9\uD55C \uD658\uACBD\uC624\uC5FC\uC73C\uB85C
+      \uC778\uD574 \uC0AC\uB78C\uB4E4\uC774 \uC608\uC804\uCC98\uB7FC \uC815\uC0C1\uC801\uC73C\uB85C
+      \uC0B4 \uC218 \uC5C6\uAC8C \uB418\uC5C8\uB2E4.\_\_\uB2E4\uC2DC \uC9C0\uAD6C\uB97C
+      \uC608\uC804\uC73C\uB85C \uB418\uB3CC\uB9AC\uACE0 \uC2F6\uC740 \uACFC\uD559\uC790
+      D\uB294 \uB2E4\uB978 \uB6F0\uC5B4\uB09C \uB3D9\uB8CC \uACFC\uD559\uC790\uB4E4\uACFC
+      \uC5F0\uAD6C\uB97C \uC704\uD574 \uC6B0\uC8FC\uC120\uC5D0 \uBAB8\uC744 \uC2E3\uACE0
+      \uC5F0\uAD6C\uB97C \uD558\uBA70 \uC0DD\uD65C\uD558\uACE0 \uC788\uB2E4."
+    clip: {fileID: 32900000, guid: b90cbbee671f5de4fa1b4e7ce1677d3f, type: 3}
+    image: {fileID: 0}
+  - ID: Image_011
+    title: < Crabshop >
+    name: "202113078 \uC774\uBBFC\uD76C"
+    description: "\uD574\uBCC0\uAC00 \uC0C1\uC778\uC774 \uC6B4\uC601\uD558\uB294
+      \uD574\uC0B0\uBB3C\uC0C1\uC810\uC785\uB2C8\uB2E4. \uC9C1\uC811 \uB514\uC790\uC778\uD55C
+      \uC6D0\uD654\uC5D0 \uC0BC\uBA74\uB3C4\uC640 3d\uBAA8\uB378\uB9C1\uAE4C\uC9C0
+      \uC791\uC5C5\uD588\uC2B5\uB2C8\uB2E4. 1\uD559\uB144 \uBC30\uACBD\uCEE8\uC149\uC544\uD2B8\uAE30\uCD08
+      \uAE30\uB9D0\uACFC\uC81C (\uC6D0\uD654\uC774\uBBF8\uC9C0 \uD55C\uC815)"
+    clip: {fileID: 0}
+    image: {fileID: 21300000, guid: 98ac00467ac11874fbec33a800f56d1e, type: 3}
+  - ID: Image_012
+    title: < Desert nomad >
+    name: "201813057 \uC774\uC131\uD6C8"
+    description: "2\uD559\uB144 2\uD559\uAE30 3D\uAC8C\uC784\uCE90\uB9AD\uD130\uC81C\uC791\uC2EC\uD654
+      \uC218\uC5C5\_\uAE30\uB9D0\uACE0\uC0AC \uC791\uC5C5\uBB3C\_\uC785\uB2C8\uB2E4.
+      Cloud Imperium Games\uC5D0\uC11C \uC81C\uC791\uD55C Star citizen \uAC8C\uC784
+      \uC18D desert nomad\uB77C\uB294 \uCE90\uB9AD\uD130 \uC785\uB2C8\uB2E4.  \uCD9C\uCC98\_:
+      [https://robertsspaceindustries.com/star-citizen](https://robertsspaceindustries.com/star-citizen)"
+    clip: {fileID: 32900000, guid: a138cc99ef1e3df46a25e9ae43e7aebd, type: 3}
+    image: {fileID: 0}
+  - ID: Image_013
+    title: "< \uBB34\uC778\uB3C4 \uD45C\uB958\uAE30 >"
+    name: "202013186 \uC774\uC2B9\uC544"
+    description: "\u20183D \uBC30\uACBD \uBAA8\uB378\uB9C1 & \uB9E4\uD551\u2019 \uC218\uC5C5\uC5D0\uC11C
+      \uAE30\uB9D0 \uACFC\uC81C\uB85C \uC791\uC5C5\uD588\uB358 \uC791\uD488\uC73C\uB85C
+      \uC791\uC740 \uBB34\uC778\uB3C4\uC5D0\uC11C \uC870\uB09C\uB2F9\uD55C \uC0AC\uB78C\uC774
+      \uC0AC\uB294 \uC9D1\uC744 \uB514\uC624\uB77C\uB9C8 \uD615\uC2DD\uC73C\uB85C
+      \uB9CC\uB4E0 \uC791\uD488\uC744 \uBAA8\uC791\uD558\uC600\uC2B5\uB2C8\uB2E4. 
+      \uC791\uD488\uC758 \uBD84\uC704\uAE30\uB97C \uBAA8\uBC29\uD558\uB294 \uB370\uC5D0
+      \uAC00\uC7A5 \uD070 \uB178\uB825\uC744 \uAE30\uC6B8\uC600\uC2B5\uB2C8\uB2E4. 
+      \uBC30\uB97C \uD0C0\uACE0 \uD574\uB958\uC5D0 \uD729\uC4F8\uB824 \uB3C4\uCC29\uD55C
+      \uC774\uACF3. \uC544\uBB34\uAC83\uB3C4 \uC5C6\uC9C0\uB9CC, \uC0AC\uB78C\uC774
+      \uC0B4\uC558\uB358 \uD754\uC801\uC774 \uC788\uB2E4.. \uC5EC\uAE30\uC11C \uC0B4
+      \uC218\uB294 \uC788\uACA0\uC9C0\uB9CC\u2026    \uC5ED\uC2DC \uC9D1\uC5D0 \uB3CC\uC544\uAC00\uACE0
+      \uC2F6\uC5B4! \uCC38\uACE0 -  2D \uC791\uD488 \uCD9C\uCC98: [https://www.artstation.com/artwork/wmRL9](https://www.artstation.com/artwork/wmRL9) 
+      3D \uC791\uD488 \uCD9C\uCC98: [https://www.artstation.com/artwork/XXdB0](https://www.artstation.com/artwork/XXdB0)"
+    clip: {fileID: 32900000, guid: f79e92cd196e8e54da38911e07dfa6fb, type: 3}
+    image: {fileID: 0}
+  - ID: Image_014
+    title: "< \uC0AC\uB9C9\uC758 \uD669\uAE08 \uC624\uC544\uC2DC\uC2A4 \uBBF8\uAD81
+      (\uB3C5\uADF9\uBB3C\uC744 \uACC1\uB4E4\uC778) >"
+    name: "201913113 \uCD5C\uD604\uD654, 201926037 \uBBFC\uC9C0\uD604, 202013066
+      \uC804\uBCF4\uACBD, 202013211 \uCD5C\uC5F0\uC601"
+    description: "2\uD559\uB144 2\uD559\uAE30 3D \uBC30\uACBD \uC81C\uC791 \uC2EC\uD654
+      (\uC2E0\uC218\uC9C4 \uAD50\uC218\uB2D8) \uC218\uC5C5\uC758 \uAE30\uB9D0 \uACFC\uC81C\uB85C
+      \uC81C\uC791\uD588\uC5C8\uB358, \uC0AC\uB9C9\uC758 \uC9C0\uD558 \uB358\uC804\uC744
+      \uBC30\uACBD\uC73C\uB85C \uD55C \uC791\uC5C5\uBB3C\uC785\uB2C8\uB2E4.  \uBCF4\uBB3C\uC744\_\uCC3E\uAE30
+      \uC704\uD574 \uC704\uD5D8\uD55C \uC720\uC801\uC9C0 \uB358\uC804\uC73C\uB85C
+      \uC9C4\uC785\uD55C 6\uB4F1\uC2E0 \uACE0\uC591\uC774 \uC720\uC800\uC758 \uC2DC\uC810\uC774\uB77C\uB294
+      \uCEE8\uC149\uC73C\uB85C \uC601\uC0C1\uC744 \uB2F4\uC544\uB0C8\uC2B5\uB2C8\uB2E4.
+      \uBAA8\uB4C8\uD654\uC640 \uB808\uBCA8 \uB514\uC790\uC778\uC5D0 \uD2B9\uD788\uB098
+      \uC2E0\uACBD\uC744 \uC4F0\uBA70 \uC2DC\uAC04\uC744 \uB9CE\uC774 \uC3DF\uC544\uB0B4\uC5C8\uB358,
+      \uADF8\uC57C\uB9D0\uB85C \uC800\uD76C \uD300\uC6D0\uB4E4\uC758 \uAE30\uC068\uC758
+      \uB208\uBB3C\uB85C \uB9CC\uB4E4\uC5B4\uC9C4 \uD669\uAE08\uC758 \uC791\uD488\uC785\uB2C8\uB2E4."
+    clip: {fileID: 32900000, guid: 8907f90a36d309740802eb085cd124bd, type: 3}
+    image: {fileID: 0}
+  - ID: Image_015
+    title: "< \uCCAD\uAC15\uB300\uBD88\uB2ED\uBC1C >"
+    name: "\uD300 \uCCAD\uAC15\uB300\uBD88\uB2ED\uBC1C - 201913072 \uC774\uD558\uB098,
+      201913031 \uBC18\uBA85\uC544, 201913097 \uAE40\uB2E4\uC740"
+    description: "2\uD559\uB144 A\uBC18 \uAC8C\uC784 \uADF8\uB798\uD53D \uC5D4\uC9C4
+      \uC2EC\uD654 \uAC15\uC758\uC5D0\uC11C \uC9C4\uD589\uD55C \uD300 \uD504\uB85C\uC81D\uD2B8
+      \uACB0\uACFC\uBB3C\uC785\uB2C8\uB2E4. \uC694\uB9AC\uAC8C\uC784\uC774\uB77C\uB294
+      \uCEE8\uC149\uC744 \uC7A1\uACE0 \uD300\uC6D0\uB4E4\uC758 \uC758\uACAC\uC744
+      \uBAA8\uC544 \uD604\uB300\uC758 \uBD80\uC5CC\uC744 \uAFB8\uBA84\uC2B5\uB2C8\uB2E4."
+    clip: {fileID: 32900000, guid: ae12a22bb5a9c0f4a9e7f516444e62ab, type: 3}
+    image: {fileID: 0}
+  - ID: Image_016
+    title: "< \uACE0\uC591\uC774 \uB9C8\uB140\uC758 \uC8FC\uBC29 >"
+    name: "202113212 \uAE40\uD76C\uC9C4"
+    description: "\uB545\uAC70\uBBF8 \uC9C8 \uBB34\uB835\_\uC5B4\uB290 \uC0B0\uC18D,
+      \uBC29\uB791\uC790\uB294\_\uB2EC\uCF64\uD55C \uD5A5\uAE30\uC5D0\_\uC774\uB04C\uB824
+      \uD55C \uC624\uB450\uB9C9\uC744 \uBC1C\uACAC\uD558\uAC8C \uB41C\uB2E4.\uB204\uAD70\uAC00\uAC00
+      \uD55C\uCC3D \uC2DD\uC0AC\uB97C \uC990\uAE30\uACE0 \uC788\uC5C8\uB358 \uBAA8\uC591\uC774\uB2E4.
+      \uC8FC\uC778\uC740 \uC5B4\uB514\uB85C \uAC04 \uAC78\uAE4C?  - \uACE0\uC591\uC774
+      \uB9C8\uB140\uC758 \uAE30\uBB18\uD558\uACE0\uB3C4 \uC73C\uC2A4\uC2A4\uD55C
+      \uC8FC\uBC29\uC785\uB2C8\uB2E4. - \uCEE8\uC149 \uC2A4\uCF00\uCE58\uBD80\uD130
+      \uC601\uC0C1\uC791\uC5C5\uAE4C\uC9C0\uC758 \uC791\uC5C5\uACFC\uC815\uC740 \uC544\uD2B8\uC2A4\uD14C\uC774\uC158([https://www.artstation.com/foolycooly7](https://www.artstation.com/foolycooly7))\uD639\uC740\uAC1C\uC778
+      \uBE14\uB85C\uADF8([https://foolycooly.tistory.com/](https://foolycooly.tistory.com/44?category=972617))\uC5D0\uC11C
+      \uBCF4\uC2E4 \uC218 \uC788\uC2B5\uB2C8\uB2E4. - 1\uD559\uB144 1\uD559\uAE30
+      3D\uBAA8\uB378\uB9C1\uAE30\uCD08 \uC218\uC5C5\uC758 \uC911\uAC04\uACFC\uC81C\uB85C
+      \uC9C4\uD589\uD588\uB358\_\uC2DD\uD0C1 \uACFC\uC81C\uB97C \uACA8\uC6B8\uBC29\uD559
+      \uB3D9\uC548 \uB514\uBCA8\uB86D\uD558\uC600\uC2B5\uB2C8\uB2E4. (\uCD1D \uC791\uC5C5\uAE30\uAC04:
+      2\uC8FC)"
+    clip: {fileID: 32900000, guid: dd8f554b1f9067e4cb82e731829412c1, type: 3}
+    image: {fileID: 0}
+--- !u!4 &8566291898644657669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8566291898644657667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.42, y: 3.7596102, z: -5.2600007}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
