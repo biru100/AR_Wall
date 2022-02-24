@@ -11,11 +11,16 @@ public class AR_Object : MonoBehaviour
     Canvas canvas;
 
     [SerializeField]
-
+    Text titleText;
 
     private void Start()
     {
         canvas.worldCamera = Camera.main;
+    }
+
+    public void SetTitle(string str)
+    {
+        titleText.text = str;
     }
 
 

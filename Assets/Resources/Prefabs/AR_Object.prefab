@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 7357122614663925687}
-  sprite2d: {fileID: 21300000, guid: 12df3a45a556ae64dbf0bc105544f068, type: 3}
+  titleText: {fileID: 1394317254069948430}
 --- !u!328 &2287725485014255473
 VideoPlayer:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.ARFoundation;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,7 +18,12 @@ public class GameManager : MonoBehaviour
     GameObject ExitPanel;
     [SerializeField]
     Image resource2D;
-    
+    [SerializeField]
+    ARTrackedImageManager imageManager;
+
+    AR_Object trackedObject;
+
+    bool activeCheck;
 
     public RawImage videoimage { get => videoImage; }
     public Image resource2d { get => resource2D; }
@@ -27,11 +33,65 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    private void OnEnable()
+    {
+        imageManager.trackedImagesChanged += TrackedImage;
+    }
+
+    private void OnDisable()
+    {
+        imageManager.trackedImagesChanged -= TrackedImage;
+    }
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             ExitPanel.SetActive(!ExitPanel.activeSelf);
+        }
+    }
+
+    void TrackedImage(ARTrackedImagesChangedEventArgs eventArgs)
+    {
+        foreach (var newImage in eventArgs.added)
+        {
+            // Handle added event
+            trackedObject = newImage.gameObject.GetComponent<AR_Object>();
+        }
+
+        foreach (var updatedImage in eventArgs.updated)
+        {
+            // Handle updated event
+            updatedImage.gameObject.SetActive(updatedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking);
+            if(updatedImage.gameObject.activeSelf)
+            {
+                if(!activeCheck)
+                {
+                    Debug.Log("¿¡·¯");
+                    activeCheck = true;
+                    for(int i = 0; i < AR_Data.instance.list.Length; i++)
+                    {
+                        Debug.Log(updatedImage.referenceImage.name);
+                        Debug.Log(AR_Data.instance.list[i].ID);
+                        if (updatedImage.referenceImage.name == AR_Data.instance.list[i].ID)
+                        {
+                            ARdata data = AR_Data.instance.list[i];
+                            trackedObject.SetTitle(data.title);
+                            Debug.Log(data.title);
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                activeCheck = false;
+            }
+        }
+
+        foreach (var removedImage in eventArgs.removed)
+        {
+            // Handle removed event
         }
     }
 

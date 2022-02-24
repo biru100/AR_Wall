@@ -17,5 +17,12 @@ public class AR_Data : MonoBehaviour
     public static AR_Data instance;
 
     [SerializeField]
-    ARdata[] list;
+    ARdata[] List;
+
+    public ARdata[] list { get => List; }
+
+    private void Awake()
+    {
+        instance = this; 
+    }
 }
