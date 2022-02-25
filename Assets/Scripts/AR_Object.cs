@@ -23,24 +23,33 @@ public class AR_Object : MonoBehaviour
     private void Start()
     {
         canvas.worldCamera = Camera.main;
-        player = GetComponent<VideoPlayer>();
+        player = GameManager.instance.player;
+        player.targetCamera = GameManager.instance.arCamera;
     }
 
     public void SetData(ARdata data)
     {
-        titleText.text = data.title + "\n- " + name;
+        if(player == null)
+        {
+            player = GameManager.instance.player;
+        }
+
+        titleText.text = data.title + "\n- " + data.name;
         descriptionText.text = data.description;
         if(data.clip != null)
         {
-            videoImage.SetActive(true);
-            player.clip = data.clip;
+            Debug.Log("À¸¿¡¾Ó");
+            GameManager.instance.player.clip = data.clip;
         }
         else
         {
             videoImage.SetActive(false);
         }
     }
-
+    public void ChangeVideoMode(bool check)
+    {
+        GameManager.instance.ChangeVideoMode(check);
+    }
 
     void videoOnClick()
     {

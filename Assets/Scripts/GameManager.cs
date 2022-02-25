@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 using UnityEngine.XR.ARFoundation;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     [SerializeField]
-    GameObject videoPanel;
+    Camera ARCamera;
+    [SerializeField]
+    Camera VideoCamera;
     [SerializeField]
     RawImage videoImage;
     [SerializeField]
@@ -23,14 +25,18 @@ public class GameManager : MonoBehaviour
 
     AR_Object trackedObject;
 
-    bool activeCheck;
+    public VideoPlayer player { get; private set; }
 
     public RawImage videoimage { get => videoImage; }
     public Image resource2d { get => resource2D; }
+    public Camera arCamera { get => ARCamera; }
 
     private void Awake()
     {
         instance = this;
+        player = GetComponent<VideoPlayer>();
+        player.targetCamera = VideoCamera;
+        ChangeVideoMode(false);
     }
 
     private void OnEnable()
@@ -57,39 +63,35 @@ public class GameManager : MonoBehaviour
         {
             // Handle added event
             trackedObject = newImage.gameObject.GetComponent<AR_Object>();
-        }
-
-        foreach (var updatedImage in eventArgs.updated)
-        {
-            // Handle updated event
-            updatedImage.gameObject.SetActive(updatedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking);
-            if(updatedImage.gameObject.activeSelf)
+            for (int i = 0; i < AR_Data.instance.list.Length; i++)
             {
-                if(!activeCheck)
+                if (newImage.referenceImage.name == AR_Data.instance.list[i].ID)
                 {
-                    activeCheck = true;
-                    for(int i = 0; i < AR_Data.instance.list.Length; i++)
-                    {
-                        if (updatedImage.referenceImage.name == AR_Data.instance.list[i].ID)
-                        {
-                            trackedObject.SetData(AR_Data.instance.list[i]);
-                            break;
-                        }
-                    }
+                    trackedObject.SetData(AR_Data.instance.list[i]);
+                    break;
                 }
             }
-            else
-            {
-                activeCheck = false;
-            }
-        }
-
-        foreach (var removedImage in eventArgs.removed)
-        {
-            // Handle removed event
         }
     }
+    public void ChangeVideoMode(bool check)
+    {
+        if (check)
+        {
+            VideoCamera.gameObject.SetActive(true);
+            arCamera.gameObject.transform.root.gameObject.SetActive(false);
+            player.renderMode = VideoRenderMode.CameraNearPlane;
+            player.targetCamera = VideoCamera;
+            player.audioOutputMode = VideoAudioOutputMode.Direct;
+        }
+        else
+        {
+            VideoCamera.gameObject.SetActive(false);
+            arCamera.gameObject.transform.root.gameObject.SetActive(true);
+            player.renderMode = VideoRenderMode.RenderTexture;
+            player.audioOutputMode = VideoAudioOutputMode.None;
+        }
 
+    }
     public void Exit(bool check)
     {
         if(check)
@@ -104,7 +106,7 @@ public class GameManager : MonoBehaviour
 
     public void SelectVideo(bool check)
     {
-        videoPanel.SetActive(check);
+        arCamera.gameObject.SetActive(!check);
     }
 
     public void SelectImage(bool check)

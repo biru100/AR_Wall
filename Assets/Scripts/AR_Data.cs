@@ -22,6 +22,7 @@ public class AR_Data : MonoBehaviour
 
     public ARdata[] list { get => List; }
 
+
     private void Awake()
     {
         instance = this; 
