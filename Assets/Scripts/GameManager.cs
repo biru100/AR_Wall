@@ -13,7 +13,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Camera VideoCamera;
     [SerializeField]
-    RawImage videoImage;
+    GameObject TitlePanel;
+    [SerializeField]
+    GameObject MainPanel;
+    [SerializeField]
+    GameObject VideoPanel;
     [SerializeField]
     GameObject imagePanel;
     [SerializeField]
@@ -27,7 +31,6 @@ public class GameManager : MonoBehaviour
 
     public VideoPlayer player { get; private set; }
 
-    public RawImage videoimage { get => videoImage; }
     public Image resource2d { get => resource2D; }
     public Camera arCamera { get => ARCamera; }
 
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
         player = GetComponent<VideoPlayer>();
         player.targetCamera = VideoCamera;
         ChangeVideoMode(false);
+        Invoke("DisableTitle", 2.3f);
     }
 
     private void OnEnable()
@@ -53,7 +57,14 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            ExitPanel.SetActive(!ExitPanel.activeSelf);
+            if(VideoCamera.gameObject.activeSelf)
+            {
+                ChangeVideoMode(false);
+            }
+            else
+            {
+                ExitPanel.SetActive(!ExitPanel.activeSelf);
+            }
         }
     }
 
@@ -73,20 +84,28 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    void DisableTitle()
+    {
+        TitlePanel.SetActive(false);
+    }
+
     public void ChangeVideoMode(bool check)
     {
+        VideoCamera.gameObject.SetActive(check);
+        arCamera.gameObject.transform.root.gameObject.SetActive(!check);
+        MainPanel.SetActive(!check);
+        VideoPanel.SetActive(check);
+
         if (check)
         {
-            VideoCamera.gameObject.SetActive(true);
-            arCamera.gameObject.transform.root.gameObject.SetActive(false);
             player.renderMode = VideoRenderMode.CameraNearPlane;
             player.targetCamera = VideoCamera;
             player.audioOutputMode = VideoAudioOutputMode.Direct;
         }
         else
         {
-            VideoCamera.gameObject.SetActive(false);
-            arCamera.gameObject.transform.root.gameObject.SetActive(true);
+
             player.renderMode = VideoRenderMode.RenderTexture;
             player.audioOutputMode = VideoAudioOutputMode.None;
         }
