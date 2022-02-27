@@ -83,6 +83,10 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        foreach(var newImage in eventArgs.removed)
+        {
+            player.targetTexture.Release();
+        }
     }
 
     void DisableTitle()

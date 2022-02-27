@@ -38,7 +38,6 @@ public class AR_Object : MonoBehaviour
         descriptionText.text = data.description;
         if(data.clip != null)
         {
-            Debug.Log("À¸¿¡¾Ó");
             GameManager.instance.player.clip = data.clip;
         }
         else
