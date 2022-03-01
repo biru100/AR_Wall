@@ -36,6 +36,7 @@ public class AR_Object : MonoBehaviour
 
         titleText.text = data.title + "\n- " + data.name;
         descriptionText.text = data.description;
+        GameManager.instance.SetData(data);
         if(data.clip != null)
         {
             GameManager.instance.player.clip = data.clip;
@@ -43,11 +44,17 @@ public class AR_Object : MonoBehaviour
         else
         {
             videoImage.SetActive(false);
+            data.clip = null;
         }
     }
     public void ChangeVideoMode(bool check)
     {
         GameManager.instance.ChangeVideoMode(check);
+    }
+
+    public void SelectInfo(bool check)
+    {
+        GameManager.instance.SelectInfo(check);
     }
 
     void videoOnClick()

@@ -5,6 +5,17 @@ using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.XR.ARFoundation;
 
+[System.Serializable]
+public class ManagerUI
+{
+    public GameObject TitlePanel;
+    public GameObject MainPanel;
+    public GameObject VideoPanel;
+    public GameObject InfoPanel;
+    public GameObject imagePanel;
+    public GameObject ExitPanel;
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -13,19 +24,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Camera VideoCamera;
     [SerializeField]
-    GameObject TitlePanel;
-    [SerializeField]
-    GameObject MainPanel;
-    [SerializeField]
-    GameObject VideoPanel;
-    [SerializeField]
-    GameObject imagePanel;
-    [SerializeField]
-    GameObject ExitPanel;
+    ManagerUI managerUI;
     [SerializeField]
     Image resource2D;
     [SerializeField]
     ARTrackedImageManager imageManager;
+    [SerializeField]
+    Text titleText;
+    [SerializeField]
+    Text descriptionText;
 
     AR_Object trackedObject;
 
@@ -36,11 +43,19 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if(instance == null)
+        {
+            instance = this;
+            Invoke("DisableTitle", 2.3f);
+        }
+        else
+        {
+            instance = this;
+            DisableTitle();
+        }
         player = GetComponent<VideoPlayer>();
         player.targetCamera = VideoCamera;
         ChangeVideoMode(false);
-        Invoke("DisableTitle", 2.3f);
     }
 
     private void OnEnable()
@@ -63,7 +78,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                ExitPanel.SetActive(!ExitPanel.activeSelf);
+                managerUI.ExitPanel.SetActive(!managerUI.ExitPanel.activeSelf);
             }
         }
     }
@@ -85,21 +100,28 @@ public class GameManager : MonoBehaviour
         }
         foreach(var newImage in eventArgs.removed)
         {
+            player.clip = null;
             player.targetTexture.Release();
         }
     }
 
     void DisableTitle()
     {
-        TitlePanel.SetActive(false);
+        managerUI.TitlePanel.SetActive(false);
+    }
+
+    public void SetData(ARdata data)
+    {
+        titleText.text = data.title + "\n- " + data.name;
+        descriptionText.text = data.description;
     }
 
     public void ChangeVideoMode(bool check)
     {
         VideoCamera.gameObject.SetActive(check);
         arCamera.gameObject.transform.root.gameObject.SetActive(!check);
-        MainPanel.SetActive(!check);
-        VideoPanel.SetActive(check);
+        managerUI.MainPanel.SetActive(!check);
+        managerUI.VideoPanel.SetActive(check);
 
         if (check)
         {
@@ -123,8 +145,13 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            ExitPanel.SetActive(false);
+            managerUI.ExitPanel.SetActive(false);
         }
+    }
+
+    public void SelectInfo(bool check)
+    {
+        managerUI.InfoPanel.SetActive(check);
     }
 
     public void SelectVideo(bool check)
@@ -134,6 +161,6 @@ public class GameManager : MonoBehaviour
 
     public void SelectImage(bool check)
     {
-        imagePanel.SetActive(check);
+        managerUI.imagePanel.SetActive(check);
     }
 }
