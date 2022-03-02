@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     Text titleText;
     [SerializeField]
     Text descriptionText;
+    [SerializeField]
+    Image ObjectImage;
 
     AR_Object trackedObject;
 
@@ -114,6 +116,7 @@ public class GameManager : MonoBehaviour
     {
         titleText.text = data.title + "\n- " + data.name;
         descriptionText.text = data.description;
+        ObjectImage.sprite = data.image;
     }
 
     public void ChangeVideoMode(bool check)

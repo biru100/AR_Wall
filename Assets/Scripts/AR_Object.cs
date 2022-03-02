@@ -19,6 +19,9 @@ public class AR_Object : MonoBehaviour
     [SerializeField]
     GameObject videoImage;
 
+    [SerializeField]
+    Image ObjectImage;
+
     VideoPlayer player;
     private void Start()
     {
@@ -36,6 +39,7 @@ public class AR_Object : MonoBehaviour
 
         titleText.text = data.title + "\n- " + data.name;
         descriptionText.text = data.description;
+        ObjectImage.sprite = data.image;
         GameManager.instance.SetData(data);
         if(data.clip != null)
         {
