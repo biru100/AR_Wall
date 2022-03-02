@@ -47,6 +47,7 @@ public class AR_Object : MonoBehaviour
         }
         else
         {
+            ObjectImage.gameObject.SetActive(true);
             videoImage.SetActive(false);
             data.clip = null;
         }

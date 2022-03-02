@@ -286,6 +286,7 @@ MonoBehaviour:
   titleText: {fileID: 1394317254069948430}
   descriptionText: {fileID: 3701484032212632766}
   videoImage: {fileID: 3138051501590152029}
+  ObjectImage: {fileID: 4244188051273302968}
 --- !u!1 &2618330078268030999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,7 +1081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &345570800857807947
 RectTransform:
   m_ObjectHideFlags: 0
