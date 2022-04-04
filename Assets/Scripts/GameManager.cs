@@ -14,6 +14,12 @@ public class ManagerUI
     public GameObject InfoPanel;
     public GameObject imagePanel;
     public GameObject ExitPanel;
+
+    public Slider VideoPortraitSlider;
+    public Slider VideoLandScapeSlider;
+
+    public GameObject VideoPlayButton;
+    public GameObject VideoPauseButton;
 }
 
 public class GameManager : MonoBehaviour
@@ -42,6 +48,8 @@ public class GameManager : MonoBehaviour
 
     public Image resource2d { get => resource2D; }
     public Camera arCamera { get => ARCamera; }
+
+    float detailValue = 0;
 
     private void Awake()
     {
@@ -83,6 +91,8 @@ public class GameManager : MonoBehaviour
                 managerUI.ExitPanel.SetActive(!managerUI.ExitPanel.activeSelf);
             }
         }
+        //managerUI.VideoLandScapeSlider.gameObject.SetActive(Screen.orientation == ScreenOrientation.Landscape);
+        //managerUI.VideoPortraitSlider.gameObject.SetActive(Screen.orientation != ScreenOrientation.Landscape);
     }
 
     void TrackedImage(ARTrackedImagesChangedEventArgs eventArgs)
@@ -165,5 +175,19 @@ public class GameManager : MonoBehaviour
     public void SelectImage(bool check)
     {
         managerUI.imagePanel.SetActive(check);
+    }
+    public void VideoPlay(bool check)
+    {
+        if(check)
+        {
+            player.Play();
+        }
+        else
+        {
+            player.Pause();
+        }
+
+        managerUI.VideoPlayButton.SetActive(player.isPlaying);
+        managerUI.VideoPauseButton.SetActive(player.isPaused);
     }
 }
