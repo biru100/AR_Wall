@@ -43,10 +43,10 @@ public class AR_Object : MonoBehaviour
         }
 
         titleText.text = data.title + "\n- " + data.name;
-        descriptionText.text = data.description;
-        ObjectImage.sprite = data.image;
-        scenename = data.SceneName;
-        SceneLoadButton.SetActive(scenename != "");
+        //descriptionText.text = data.description;
+        //ObjectImage.sprite = data.image;
+        //scenename = data.SceneName;
+        //SceneLoadButton.SetActive(scenename != "");
         GameManager.instance.SetData(data);
         if(data.clip != null)
         {
@@ -69,9 +69,9 @@ public class AR_Object : MonoBehaviour
         SceneManager.LoadScene(scenename);
     }
 
-    public void SelectInfo(bool check)
+    public void SelectInfo()
     {
-        GameManager.instance.SelectInfo(check);
+        GameManager.instance.SelectInfo();
     }
 
     void videoOnClick()

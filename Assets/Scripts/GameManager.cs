@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
         {
             // Handle added event
             trackedObject = newImage.gameObject.GetComponent<AR_Object>();
+            trackedObject.gameObject.SetActive(true);
             for (int i = 0; i < AR_Data.instance.list.Length; i++)
             {
                 if (newImage.referenceImage.name == AR_Data.instance.list[i].ID)
@@ -112,6 +113,7 @@ public class GameManager : MonoBehaviour
         }
         foreach(var newImage in eventArgs.removed)
         {
+            newImage.gameObject.SetActive(false);
             player.clip = null;
             player.targetTexture.Release();
         }
@@ -162,9 +164,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SelectInfo(bool check)
+    public void SelectInfo()
     {
-        managerUI.InfoPanel.SetActive(check);
+        managerUI.InfoPanel.SetActive(!managerUI.InfoPanel.activeSelf);
     }
 
     public void SelectVideo(bool check)

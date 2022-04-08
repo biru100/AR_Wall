@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 7357122614663925687}
-  titleText: {fileID: 0}
+  titleText: {fileID: 1012509186125880487}
   descriptionText: {fileID: 0}
   videoImage: {fileID: 0}
   ObjectImage: {fileID: 0}
