@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
 
     float detailValue = 0;
 
+    bool infocheck = false;
+    Coroutine infoCorutine = null;
+
     private void Awake()
     {
         if(instance == null)
@@ -166,7 +169,10 @@ public class GameManager : MonoBehaviour
 
     public void SelectInfo()
     {
-        managerUI.InfoPanel.SetActive(!managerUI.InfoPanel.activeSelf);
+        if (infoCorutine != null)
+            StopCoroutine(infoCorutine);
+        infoCorutine = StartCoroutine(ViewInfo(!infocheck));
+        infocheck = !infocheck;
     }
 
     public void SelectVideo(bool check)
@@ -191,5 +197,17 @@ public class GameManager : MonoBehaviour
 
         managerUI.VideoPlayButton.SetActive(player.isPlaying);
         managerUI.VideoPauseButton.SetActive(player.isPaused);
+    }
+
+    IEnumerator ViewInfo(bool check)
+    {
+        float y = check ? -Screen.height / 2 + 400 : Screen.height / 2;
+        Vector3 targetPos = new Vector3(managerUI.InfoPanel.transform.position.x, y, managerUI.InfoPanel.transform.position.z);
+        while (managerUI.InfoPanel.transform.position != targetPos)
+        {
+            managerUI.InfoPanel.transform.position = Vector3.Lerp(managerUI.InfoPanel.transform.position, targetPos, 0.1f);
+            yield return null;
+        }
+        yield return null;
     }
 }
