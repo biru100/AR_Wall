@@ -901,7 +901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 225}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -203}
+  m_AnchoredPosition: {x: 0, y: -200}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &237275840
@@ -3980,13 +3980,14 @@ MonoBehaviour:
     TitlePanel: {fileID: 875637847}
     MainPanel: {fileID: 695424273}
     VideoPanel: {fileID: 250952444}
-    InfoPanel: {fileID: 1489200638}
+    InfoPanel: {fileID: 1489200639}
     imagePanel: {fileID: 484775682}
     ExitPanel: {fileID: 1183116841}
     VideoPortraitSlider: {fileID: 612111372}
     VideoLandScapeSlider: {fileID: 1459676243}
     VideoPlayButton: {fileID: 1338762329}
     VideoPauseButton: {fileID: 767270404}
+    SwipeArrow: {fileID: 237275839}
   resource2D: {fileID: 1752251347}
   imageManager: {fileID: 1659859601}
   titleText: {fileID: 1986399925}
@@ -5155,10 +5156,10 @@ RectTransform:
   m_Father: {fileID: 2039072039}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -1158}
+  m_SizeDelta: {x: 0, y: 2316}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1489200640
 MonoBehaviour:

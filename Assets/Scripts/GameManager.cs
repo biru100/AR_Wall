@@ -11,7 +11,7 @@ public class ManagerUI
     public GameObject TitlePanel;
     public GameObject MainPanel;
     public GameObject VideoPanel;
-    public GameObject InfoPanel;
+    public RectTransform InfoPanel;
     public GameObject imagePanel;
     public GameObject ExitPanel;
 
@@ -20,6 +20,8 @@ public class ManagerUI
 
     public GameObject VideoPlayButton;
     public GameObject VideoPauseButton;
+
+    public RectTransform SwipeArrow;
 }
 
 public class GameManager : MonoBehaviour
@@ -201,11 +203,19 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ViewInfo(bool check)
     {
-        float y = check ? -Screen.height / 2 + 400 : Screen.height / 2;
-        Vector3 targetPos = new Vector3(managerUI.InfoPanel.transform.position.x, y, managerUI.InfoPanel.transform.position.z);
-        while (managerUI.InfoPanel.transform.position != targetPos)
+        float y = check ? -750 : -1158;
+        Vector2 targetPos = new Vector3(0, y);
+        Vector3 swipeTargetRot = new Vector3(0, 0, check ? 45 : 225);
+        Vector3 infotemp = managerUI.InfoPanel.transform.position;
+        managerUI.InfoPanel.anchorMax = check ? new Vector2(1, 0) : new Vector2(1, 1);
+        managerUI.InfoPanel.anchorMin = check ? new Vector2(0, 0) : new Vector2(0, 1);
+        managerUI.InfoPanel.transform.position = infotemp;
+        Vector3 swipeTargetPos = new Vector3(0, check ? -80  : -230, 0);
+        while (managerUI.InfoPanel.anchoredPosition != targetPos)
         {
-            managerUI.InfoPanel.transform.position = Vector3.Lerp(managerUI.InfoPanel.transform.position, targetPos, 0.1f);
+            managerUI.InfoPanel.anchoredPosition = Vector3.Lerp(managerUI.InfoPanel.anchoredPosition, targetPos, 0.1f);
+            managerUI.SwipeArrow.transform.eulerAngles = Vector3.Lerp(managerUI.SwipeArrow.transform.eulerAngles, swipeTargetRot, 0.1f);
+            managerUI.SwipeArrow.anchoredPosition = Vector3.Lerp(managerUI.SwipeArrow.anchoredPosition, swipeTargetPos, 0.1f);
             yield return null;
         }
         yield return null;
