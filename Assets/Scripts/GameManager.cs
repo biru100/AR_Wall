@@ -182,9 +182,9 @@ public class GameManager : MonoBehaviour
         arCamera.gameObject.SetActive(!check);
     }
 
-    public void SelectImage(bool check)
+    public void SelectImage()
     {
-        managerUI.imagePanel.SetActive(check);
+        managerUI.imagePanel.SetActive(!managerUI.imagePanel.activeSelf);
     }
     public void VideoPlay(bool check)
     {

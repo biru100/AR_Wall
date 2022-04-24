@@ -81,7 +81,7 @@ public class AR_Object : MonoBehaviour
 
     void imageOnClick()
     {
-        GameManager.instance.SelectImage(true);
+        GameManager.instance.SelectImage();
     }
     
 }

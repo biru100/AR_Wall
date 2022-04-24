@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -364,7 +364,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1175559414}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SelectInfo
+        m_MethodName: SelectImage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1030,7 +1030,7 @@ RectTransform:
   - {fileID: 1338762330}
   - {fileID: 767270405}
   m_Father: {fileID: 2039072039}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.21176471}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1467,7 +1467,7 @@ RectTransform:
   m_Children:
   - {fileID: 1752251349}
   m_Father: {fileID: 2039072039}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3682,7 +3682,7 @@ RectTransform:
   m_Children:
   - {fileID: 2081896225}
   m_Father: {fileID: 2039072039}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3762,7 +3762,7 @@ RectTransform:
   - {fileID: 47415664}
   - {fileID: 815664076}
   m_Father: {fileID: 2039072039}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -5343,7 +5343,7 @@ RectTransform:
   m_Children:
   - {fileID: 121266117}
   m_Father: {fileID: 2039072039}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5535,8 +5535,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1090.7, y: 1542.676}
+  m_AnchoredPosition: {x: 0.000024319, y: 158.1748}
+  m_SizeDelta: {x: 1080, y: 1564.3264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1784663189
 GameObject:
@@ -6188,11 +6188,11 @@ RectTransform:
   - {fileID: 695424274}
   - {fileID: 875637848}
   - {fileID: 1489200639}
-  - {fileID: 1302300309}
   - {fileID: 1183116842}
   - {fileID: 1740567114}
   - {fileID: 484775683}
   - {fileID: 250952445}
+  - {fileID: 1302300309}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
