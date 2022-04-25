@@ -54,11 +54,14 @@ public class GameManager : MonoBehaviour
     float detailValue = 0;
 
     bool infocheck = false;
-    Coroutine infoCorutine = null;
+
+    Vector2 targetPos;
+    Vector3 swipeTargetRot;
+    Vector3 swipeTargetPos;
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             Invoke("DisableTitle", 2.3f);
@@ -71,6 +74,7 @@ public class GameManager : MonoBehaviour
         player = GetComponent<VideoPlayer>();
         player.targetCamera = VideoCamera;
         ChangeVideoMode(false);
+        ViewInfo(false);
     }
 
     private void OnEnable()
@@ -85,9 +89,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(VideoCamera.gameObject.activeSelf)
+            if (VideoCamera.gameObject.activeSelf)
             {
                 ChangeVideoMode(false);
             }
@@ -98,6 +102,12 @@ public class GameManager : MonoBehaviour
         }
         //managerUI.VideoLandScapeSlider.gameObject.SetActive(Screen.orientation == ScreenOrientation.Landscape);
         //managerUI.VideoPortraitSlider.gameObject.SetActive(Screen.orientation != ScreenOrientation.Landscape);
+        if (managerUI.InfoPanel.anchoredPosition != targetPos)
+        {
+            managerUI.InfoPanel.anchoredPosition = Vector3.Lerp(managerUI.InfoPanel.anchoredPosition, targetPos, 0.1f);
+            managerUI.SwipeArrow.transform.eulerAngles = Vector3.Lerp(managerUI.SwipeArrow.transform.eulerAngles, swipeTargetRot, 0.1f);
+            managerUI.SwipeArrow.anchoredPosition = Vector3.Lerp(managerUI.SwipeArrow.anchoredPosition, swipeTargetPos, 0.1f);
+        }
     }
 
     void TrackedImage(ARTrackedImagesChangedEventArgs eventArgs)
@@ -116,7 +126,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        foreach(var newImage in eventArgs.removed)
+        foreach (var newImage in eventArgs.removed)
         {
             newImage.gameObject.SetActive(false);
             player.clip = null;
@@ -159,7 +169,7 @@ public class GameManager : MonoBehaviour
     }
     public void Exit(bool check)
     {
-        if(check)
+        if (check)
         {
             Application.Quit();
         }
@@ -171,9 +181,7 @@ public class GameManager : MonoBehaviour
 
     public void SelectInfo()
     {
-        if (infoCorutine != null)
-            StopCoroutine(infoCorutine);
-        infoCorutine = StartCoroutine(ViewInfo(!infocheck));
+        ViewInfo(!infocheck);
         infocheck = !infocheck;
     }
 
@@ -188,7 +196,7 @@ public class GameManager : MonoBehaviour
     }
     public void VideoPlay(bool check)
     {
-        if(check)
+        if (check)
         {
             player.Play();
         }
@@ -201,23 +209,28 @@ public class GameManager : MonoBehaviour
         managerUI.VideoPauseButton.SetActive(player.isPaused);
     }
 
-    IEnumerator ViewInfo(bool check)
+    void ViewInfo(bool check)
     {
-        float y = check ? -750 : -1158;
-        Vector2 targetPos = new Vector3(0, y);
-        Vector3 swipeTargetRot = new Vector3(0, 0, check ? 45 : 225);
         Vector3 infotemp = managerUI.InfoPanel.transform.position;
-        managerUI.InfoPanel.anchorMax = check ? new Vector2(1, 0) : new Vector2(1, 1);
-        managerUI.InfoPanel.anchorMin = check ? new Vector2(0, 0) : new Vector2(0, 1);
-        managerUI.InfoPanel.transform.position = infotemp;
-        Vector3 swipeTargetPos = new Vector3(0, check ? -80  : -200, 0);
-        while (managerUI.InfoPanel.anchoredPosition != targetPos)
+        if (check)
         {
-            managerUI.InfoPanel.anchoredPosition = Vector3.Lerp(managerUI.InfoPanel.anchoredPosition, targetPos, 0.1f);
-            managerUI.SwipeArrow.transform.eulerAngles = Vector3.Lerp(managerUI.SwipeArrow.transform.eulerAngles, swipeTargetRot, 0.1f);
-            managerUI.SwipeArrow.anchoredPosition = Vector3.Lerp(managerUI.SwipeArrow.anchoredPosition, swipeTargetPos, 0.1f);
-            yield return null;
+            float y = -750;
+            targetPos = new Vector3(0, y);
+            swipeTargetRot = new Vector3(0, 0, 45);
+            managerUI.InfoPanel.anchorMax = new Vector2(1, 0);
+            managerUI.InfoPanel.anchorMin = new Vector2(0, 0);
+            swipeTargetPos = new Vector3(0, -80, 0);
         }
-        yield return null;
+        else
+        {
+            float y = -1158;
+            targetPos = new Vector3(0, y);
+            swipeTargetRot = new Vector3(0, 0, 225);
+            managerUI.InfoPanel.anchorMax = new Vector2(1, 1);
+            managerUI.InfoPanel.anchorMin = new Vector2(0, 1);
+            swipeTargetPos = new Vector3(0, -200, 0);
+        }
+        managerUI.InfoPanel.transform.position = infotemp;
     }
 }
+
