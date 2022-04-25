@@ -112,25 +112,28 @@ public class GameManager : MonoBehaviour
 
     void TrackedImage(ARTrackedImagesChangedEventArgs eventArgs)
     {
-        foreach (var newImage in eventArgs.added)
+        if (infocheck)
         {
-            // Handle added event
-            trackedObject = newImage.gameObject.GetComponent<AR_Object>();
-            trackedObject.gameObject.SetActive(true);
-            for (int i = 0; i < AR_Data.instance.list.Length; i++)
+            foreach (var newImage in eventArgs.added)
             {
-                if (newImage.referenceImage.name == AR_Data.instance.list[i].ID)
+                // Handle added event
+                trackedObject = newImage.gameObject.GetComponent<AR_Object>();
+                trackedObject.gameObject.SetActive(true);
+                for (int i = 0; i < AR_Data.instance.list.Length; i++)
                 {
-                    trackedObject.SetData(AR_Data.instance.list[i]);
-                    break;
+                    if (newImage.referenceImage.name == AR_Data.instance.list[i].ID)
+                    {
+                        trackedObject.SetData(AR_Data.instance.list[i]);
+                        break;
+                    }
                 }
             }
-        }
-        foreach (var newImage in eventArgs.removed)
-        {
-            newImage.gameObject.SetActive(false);
-            player.clip = null;
-            player.targetTexture.Release();
+            foreach (var newImage in eventArgs.removed)
+            {
+                newImage.gameObject.SetActive(false);
+                player.clip = null;
+                player.targetTexture.Release();
+            }
         }
     }
 
