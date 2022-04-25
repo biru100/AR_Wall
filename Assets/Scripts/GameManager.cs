@@ -210,7 +210,7 @@ public class GameManager : MonoBehaviour
         managerUI.InfoPanel.anchorMax = check ? new Vector2(1, 0) : new Vector2(1, 1);
         managerUI.InfoPanel.anchorMin = check ? new Vector2(0, 0) : new Vector2(0, 1);
         managerUI.InfoPanel.transform.position = infotemp;
-        Vector3 swipeTargetPos = new Vector3(0, check ? -80  : -230, 0);
+        Vector3 swipeTargetPos = new Vector3(0, check ? -80  : -200, 0);
         while (managerUI.InfoPanel.anchoredPosition != targetPos)
         {
             managerUI.InfoPanel.anchoredPosition = Vector3.Lerp(managerUI.InfoPanel.anchoredPosition, targetPos, 0.1f);
