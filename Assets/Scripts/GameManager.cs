@@ -22,6 +22,8 @@ public class ManagerUI
     public GameObject VideoPauseButton;
 
     public RectTransform SwipeArrow;
+
+    public Animator InfoAnim;
 }
 
 public class GameManager : MonoBehaviour
@@ -55,9 +57,8 @@ public class GameManager : MonoBehaviour
 
     bool infocheck = false;
 
-    Vector2 targetPos;
-    Vector3 swipeTargetRot;
-    Vector3 swipeTargetPos;
+    float targetlerp;
+    float lerptemp;
 
     private void Awake()
     {
@@ -102,23 +103,18 @@ public class GameManager : MonoBehaviour
         }
         //managerUI.VideoLandScapeSlider.gameObject.SetActive(Screen.orientation == ScreenOrientation.Landscape);
         //managerUI.VideoPortraitSlider.gameObject.SetActive(Screen.orientation != ScreenOrientation.Landscape);
-        if (managerUI.InfoPanel.anchoredPosition != targetPos)
-        {
-            managerUI.InfoPanel.anchoredPosition = Vector3.Lerp(managerUI.InfoPanel.anchoredPosition, targetPos, 0.1f);
-            managerUI.SwipeArrow.transform.eulerAngles = Vector3.Lerp(managerUI.SwipeArrow.transform.eulerAngles, swipeTargetRot, 0.1f);
-            managerUI.SwipeArrow.anchoredPosition = Vector3.Lerp(managerUI.SwipeArrow.anchoredPosition, swipeTargetPos, 0.1f);
-        }
     }
 
     void TrackedImage(ARTrackedImagesChangedEventArgs eventArgs)
     {
-        if (infocheck)
+        foreach (var newImage in eventArgs.added)
         {
-            foreach (var newImage in eventArgs.added)
+            // Handle added event
+            trackedObject = newImage.gameObject.GetComponent<AR_Object>();
+            managerUI.InfoPanel.gameObject.SetActive(true);
+            trackedObject.gameObject.SetActive(infocheck);
+            if(infocheck)
             {
-                // Handle added event
-                trackedObject = newImage.gameObject.GetComponent<AR_Object>();
-                trackedObject.gameObject.SetActive(true);
                 for (int i = 0; i < AR_Data.instance.list.Length; i++)
                 {
                     if (newImage.referenceImage.name == AR_Data.instance.list[i].ID)
@@ -128,12 +124,13 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            foreach (var newImage in eventArgs.removed)
-            {
-                newImage.gameObject.SetActive(false);
-                player.clip = null;
-                player.targetTexture.Release();
-            }
+        }
+        foreach (var newImage in eventArgs.removed)
+        {
+            managerUI.InfoPanel.gameObject.SetActive(false);
+            newImage.gameObject.SetActive(false);
+            player.clip = null;
+            player.targetTexture.Release();
         }
     }
 
@@ -214,26 +211,14 @@ public class GameManager : MonoBehaviour
 
     void ViewInfo(bool check)
     {
-        Vector3 infotemp = managerUI.InfoPanel.transform.position;
         if (check)
         {
-            float y = -750;
-            targetPos = new Vector3(0, y);
-            swipeTargetRot = new Vector3(0, 0, 45);
-            managerUI.InfoPanel.anchorMax = new Vector2(1, 0);
-            managerUI.InfoPanel.anchorMin = new Vector2(0, 0);
-            swipeTargetPos = new Vector3(0, -80, 0);
+            managerUI.InfoAnim.SetTrigger("View");
         }
         else
         {
-            float y = -1158;
-            targetPos = new Vector3(0, y);
-            swipeTargetRot = new Vector3(0, 0, 225);
-            managerUI.InfoPanel.anchorMax = new Vector2(1, 1);
-            managerUI.InfoPanel.anchorMin = new Vector2(0, 1);
-            swipeTargetPos = new Vector3(0, -200, 0);
+            managerUI.InfoAnim.SetTrigger("Hide");
         }
-        managerUI.InfoPanel.transform.position = infotemp;
     }
 }
 

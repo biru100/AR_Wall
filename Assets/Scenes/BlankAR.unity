@@ -3467,6 +3467,7 @@ MonoBehaviour:
     VideoPlayButton: {fileID: 1338762329}
     VideoPauseButton: {fileID: 767270404}
     SwipeArrow: {fileID: 237275839}
+    InfoAnim: {fileID: 1489200642}
   resource2D: {fileID: 1752251347}
   imageManager: {fileID: 1659859601}
   titleText: {fileID: 1986399925}
@@ -4607,13 +4608,14 @@ GameObject:
   - component: {fileID: 1489200639}
   - component: {fileID: 1489200641}
   - component: {fileID: 1489200640}
+  - component: {fileID: 1489200642}
   m_Layer: 5
   m_Name: InfoPanel_Details
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1489200639
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4677,6 +4679,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489200638}
   m_CullTransparentMesh: 1
+--- !u!95 &1489200642
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489200638}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e7e3829a634dc14595bda34dd09c1be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1492555323
 GameObject:
   m_ObjectHideFlags: 0
