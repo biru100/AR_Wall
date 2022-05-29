@@ -11,7 +11,7 @@ public class ARdata
     public string name;
     public string description;
     public VideoClip clip;
-    public Sprite image;
+    public Sprite[] image;
     public string SceneName;
 }
 public class AR_Data : MonoBehaviour

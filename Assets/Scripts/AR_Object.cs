@@ -28,6 +28,9 @@ public class AR_Object : MonoBehaviour
 
     VideoPlayer player;
     string scenename;
+    public ARdata arData { get; private set; }
+
+    public bool isSetData { get; private set; } = false;
     private void Start()
     {
         canvas.worldCamera = Camera.main;
@@ -41,13 +44,12 @@ public class AR_Object : MonoBehaviour
         {
             player = GameManager.instance.player;
         }
-
+        arData = data;
         titleText.text = data.title + "\n- " + data.name;
         //descriptionText.text = data.description;
         //ObjectImage.sprite = data.image;
         //scenename = data.SceneName;
         //SceneLoadButton.SetActive(scenename != "");
-        GameManager.instance.SetData(data);
         if(data.clip != null)
         {
             GameManager.instance.player.clip = data.clip;
@@ -58,7 +60,9 @@ public class AR_Object : MonoBehaviour
             videoImage.SetActive(false);
             data.clip = null;
         }
+        isSetData = true;
     }
+
     public void ChangeVideoMode(bool check)
     {
         GameManager.instance.ChangeVideoMode(check);

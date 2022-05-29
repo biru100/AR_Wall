@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class ManagerUI
@@ -14,12 +16,9 @@ public class ManagerUI
     public RectTransform InfoPanel;
     public GameObject imagePanel;
     public GameObject ExitPanel;
-
-    public Slider VideoPortraitSlider;
-    public Slider VideoLandScapeSlider;
-
-    public GameObject VideoPlayButton;
-    public GameObject VideoPauseButton;
+    public GameObject MenuPanel;
+    public GameObject ARFindPanel;
+    public GameObject Scene3DButton;
 
     public RectTransform SwipeArrow;
 
@@ -45,21 +44,22 @@ public class GameManager : MonoBehaviour
     Text descriptionText;
     [SerializeField]
     Image ObjectImage;
+    [SerializeField]
+    Image PanelImage;
 
     AR_Object trackedObject;
+
+    Image[] ImageList;
+
+    Vector2 ImageSizetemp;
+    Vector2 PanelImageSizetemp;
 
     public VideoPlayer player { get; private set; }
 
     public Image resource2d { get => resource2D; }
     public Camera arCamera { get => ARCamera; }
 
-    float detailValue = 0;
-
     bool infocheck = false;
-
-    float targetlerp;
-    float lerptemp;
-
     private void Awake()
     {
         if (instance == null)
@@ -72,8 +72,21 @@ public class GameManager : MonoBehaviour
             instance = this;
             DisableTitle();
         }
+        ImageList = new Image[10];
+        ImageList[0] = PanelImage;
+        for(int i = 1; i < 10; i++)
+        {
+            ImageList[i] = Instantiate(PanelImage).GetComponent<Image>();
+            ImageList[i].transform.parent = ImageList[0].transform.parent;
+            //ImageList[i].transform.position = ImageList[0].transform.position + Vector3.right * ImageList[0].rectTransform.rect.width * i;
+        }
+        managerUI.InfoPanel.gameObject.SetActive(false);
+        managerUI.MenuPanel.SetActive(false);
+        managerUI.ARFindPanel.SetActive(true);
         player = GetComponent<VideoPlayer>();
         player.targetCamera = VideoCamera;
+        ImageSizetemp = ObjectImage.rectTransform.sizeDelta;
+        PanelImageSizetemp = PanelImage.rectTransform.sizeDelta;
         ChangeVideoMode(false);
         ViewInfo(false);
     }
@@ -101,36 +114,58 @@ public class GameManager : MonoBehaviour
                 managerUI.ExitPanel.SetActive(!managerUI.ExitPanel.activeSelf);
             }
         }
-        //managerUI.VideoLandScapeSlider.gameObject.SetActive(Screen.orientation == ScreenOrientation.Landscape);
-        //managerUI.VideoPortraitSlider.gameObject.SetActive(Screen.orientation != ScreenOrientation.Landscape);
     }
 
     void TrackedImage(ARTrackedImagesChangedEventArgs eventArgs)
     {
         foreach (var newImage in eventArgs.added)
         {
-            // Handle added event
             trackedObject = newImage.gameObject.GetComponent<AR_Object>();
-            managerUI.InfoPanel.gameObject.SetActive(true);
-            trackedObject.gameObject.SetActive(infocheck);
-            if(infocheck)
+
+            for (int i = 0; i < AR_Data.instance.list.Length; i++)
             {
-                for (int i = 0; i < AR_Data.instance.list.Length; i++)
+                if (newImage.referenceImage.name == AR_Data.instance.list[i].ID)
                 {
-                    if (newImage.referenceImage.name == AR_Data.instance.list[i].ID)
-                    {
-                        trackedObject.SetData(AR_Data.instance.list[i]);
-                        break;
-                    }
+                    trackedObject.SetData(AR_Data.instance.list[i]);
+                    managerUI.Scene3DButton.SetActive(trackedObject.arData.SceneName != "");
+                    SetData(AR_Data.instance.list[i]);
+                    managerUI.InfoPanel.gameObject.SetActive(true);
+                    managerUI.MenuPanel.SetActive(true);
+                    managerUI.ARFindPanel.SetActive(false);
+                    break;
                 }
             }
         }
-        foreach (var newImage in eventArgs.removed)
+        bool check = false;
+        foreach (var updateImage in eventArgs.updated)
         {
-            managerUI.InfoPanel.gameObject.SetActive(false);
-            newImage.gameObject.SetActive(false);
-            player.clip = null;
-            player.targetTexture.Release();
+            switch (updateImage.trackingState)
+            {
+                case TrackingState.None:
+                    updateImage.gameObject.SetActive(false);
+                    break;
+                case TrackingState.Limited:
+                    updateImage.gameObject.SetActive(false);
+                    break;
+                case TrackingState.Tracking:
+                    updateImage.gameObject.SetActive(true);
+                    check = true;
+                    if (trackedObject.gameObject != updateImage.gameObject)
+                    {
+                        trackedObject = updateImage.gameObject.GetComponent<AR_Object>();
+                        managerUI.Scene3DButton.SetActive(trackedObject.arData.SceneName != "");
+                        SetData(trackedObject.arData);
+                    }
+                    break;
+            }
+        }
+        managerUI.InfoPanel.gameObject.SetActive(check);
+        managerUI.MenuPanel.SetActive(check);
+        managerUI.ARFindPanel.SetActive(!check);
+        foreach (var removeImage in eventArgs.removed)
+        {
+            removeImage.gameObject.SetActive(false);
+
         }
     }
 
@@ -143,7 +178,35 @@ public class GameManager : MonoBehaviour
     {
         titleText.text = data.title + "\n- " + data.name;
         descriptionText.text = data.description;
-        ObjectImage.sprite = data.image;
+        ObjectImage.sprite = data.image[0];
+        PanelImage.sprite = data.image[0];
+        SetImagePixel(ObjectImage, ImageSizetemp.x, ImageSizetemp.y);
+        SetImagePixel(PanelImage, PanelImageSizetemp.x, PanelImageSizetemp.y);
+    }
+
+    void SetImagePixel(Image image, float x, float y)
+    {
+        float temp;
+        float texutreWidth = image.sprite.texture.width;
+        float textureHeight = image.sprite.texture.height;
+        if (texutreWidth / textureHeight > x / y)
+        {
+            temp = x / texutreWidth * textureHeight;
+            image.rectTransform.sizeDelta = new Vector2(x, temp);
+        }
+        else
+        {
+            temp = y / textureHeight * texutreWidth;
+            image.rectTransform.sizeDelta = new Vector2(temp, y);
+        }
+    }
+
+    public void Go3DScene()
+    {
+        if(trackedObject.arData.SceneName != "")
+        {
+            SceneManager.LoadScene(trackedObject.arData.SceneName);
+        }
     }
 
     public void ChangeVideoMode(bool check)
@@ -204,9 +267,6 @@ public class GameManager : MonoBehaviour
         {
             player.Pause();
         }
-
-        managerUI.VideoPlayButton.SetActive(player.isPlaying);
-        managerUI.VideoPauseButton.SetActive(player.isPaused);
     }
 
     void ViewInfo(bool check)
