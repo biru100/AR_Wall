@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Scene3DManager : MonoBehaviour
 {
-    private void OnMouseUpAsButton()
+    private void Update()
     {
         if (Input.GetKey(KeyCode.Escape))
         {

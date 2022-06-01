@@ -46,10 +46,10 @@ public class GameManager : MonoBehaviour
     Image ObjectImage;
     [SerializeField]
     Image PanelImage;
+    [SerializeField]
+    GameObject VideoImage;
 
     AR_Object trackedObject;
-
-    Image[] ImageList;
 
     Vector2 ImageSizetemp;
     Vector2 PanelImageSizetemp;
@@ -71,14 +71,6 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DisableTitle();
-        }
-        ImageList = new Image[10];
-        ImageList[0] = PanelImage;
-        for(int i = 1; i < 10; i++)
-        {
-            ImageList[i] = Instantiate(PanelImage).GetComponent<Image>();
-            ImageList[i].transform.parent = ImageList[0].transform.parent;
-            //ImageList[i].transform.position = ImageList[0].transform.position + Vector3.right * ImageList[0].rectTransform.rect.width * i;
         }
         managerUI.InfoPanel.gameObject.SetActive(false);
         managerUI.MenuPanel.SetActive(false);
@@ -121,20 +113,13 @@ public class GameManager : MonoBehaviour
         foreach (var newImage in eventArgs.added)
         {
             trackedObject = newImage.gameObject.GetComponent<AR_Object>();
-
-            for (int i = 0; i < AR_Data.instance.list.Length; i++)
-            {
-                if (newImage.referenceImage.name == AR_Data.instance.list[i].ID)
-                {
-                    trackedObject.SetData(AR_Data.instance.list[i]);
-                    managerUI.Scene3DButton.SetActive(trackedObject.arData.SceneName != "");
-                    SetData(AR_Data.instance.list[i]);
-                    managerUI.InfoPanel.gameObject.SetActive(true);
-                    managerUI.MenuPanel.SetActive(true);
-                    managerUI.ARFindPanel.SetActive(false);
-                    break;
-                }
-            }
+            ARdata data = AR_Data.instance.list[newImage.referenceImage.name];
+            trackedObject.SetData(data);
+            managerUI.Scene3DButton.SetActive(trackedObject.arData.SceneName != "");
+            SetData(data);
+            managerUI.InfoPanel.gameObject.SetActive(true);
+            managerUI.MenuPanel.SetActive(true);
+            managerUI.ARFindPanel.SetActive(false);
         }
         bool check = false;
         foreach (var updateImage in eventArgs.updated)
@@ -142,15 +127,22 @@ public class GameManager : MonoBehaviour
             switch (updateImage.trackingState)
             {
                 case TrackingState.None:
-                    updateImage.gameObject.SetActive(false);
+                    if(trackedObject.gameObject == updateImage.gameObject)
+                    {
+                        trackedObject = null;
+                        updateImage.gameObject.SetActive(false);
+                    }
                     break;
                 case TrackingState.Limited:
-                    updateImage.gameObject.SetActive(false);
+                    if (trackedObject.gameObject == updateImage.gameObject)
+                    {
+                        trackedObject = null;
+                        updateImage.gameObject.SetActive(false);
+                    }
                     break;
                 case TrackingState.Tracking:
-                    updateImage.gameObject.SetActive(true);
                     check = true;
-                    if (trackedObject.gameObject != updateImage.gameObject)
+                    if (trackedObject == null)
                     {
                         trackedObject = updateImage.gameObject.GetComponent<AR_Object>();
                         managerUI.Scene3DButton.SetActive(trackedObject.arData.SceneName != "");
@@ -159,13 +151,19 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
+
         managerUI.InfoPanel.gameObject.SetActive(check);
         managerUI.MenuPanel.SetActive(check);
         managerUI.ARFindPanel.SetActive(!check);
+        if(!check)
+        {
+            managerUI.imagePanel.SetActive(false);
+        }
+
         foreach (var removeImage in eventArgs.removed)
         {
+            trackedObject = null;
             removeImage.gameObject.SetActive(false);
-
         }
     }
 
@@ -178,10 +176,11 @@ public class GameManager : MonoBehaviour
     {
         titleText.text = data.title + "\n- " + data.name;
         descriptionText.text = data.description;
-        ObjectImage.sprite = data.image[0];
-        PanelImage.sprite = data.image[0];
+        ObjectImage.sprite = data.image;
+        PanelImage.sprite = data.image;
         SetImagePixel(ObjectImage, ImageSizetemp.x, ImageSizetemp.y);
         SetImagePixel(PanelImage, PanelImageSizetemp.x, PanelImageSizetemp.y);
+        VideoImage.SetActive(data.clip != null);
     }
 
     void SetImagePixel(Image image, float x, float y)
