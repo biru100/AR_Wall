@@ -44,7 +44,6 @@ public class AR_Object : MonoBehaviour
         {
             player = GameManager.instance.player;
         }
-        arData = data;
         titleText.text = data.title + "\n- " + data.name;
         //descriptionText.text = data.description;
         //ObjectImage.sprite = data.image;
@@ -61,6 +60,7 @@ public class AR_Object : MonoBehaviour
             data.clip = null;
         }
         isSetData = true;
+        arData = data;
     }
 
     public void ChangeVideoMode(bool check)
@@ -83,9 +83,4 @@ public class AR_Object : MonoBehaviour
         GameManager.instance.SelectVideo(true);
     }
 
-    void imageOnClick()
-    {
-        GameManager.instance.SelectImage();
-    }
-    
 }

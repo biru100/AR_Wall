@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
     Vector2 ImageSizetemp;
     Vector2 PanelImageSizetemp;
 
+    string oldDataName;
+
     public VideoPlayer player { get; private set; }
 
     public Image resource2d { get => resource2D; }
@@ -72,14 +74,12 @@ public class GameManager : MonoBehaviour
             instance = this;
             DisableTitle();
         }
-        managerUI.InfoPanel.gameObject.SetActive(false);
-        managerUI.MenuPanel.SetActive(false);
-        managerUI.ARFindPanel.SetActive(true);
         player = GetComponent<VideoPlayer>();
         player.targetCamera = VideoCamera;
         ImageSizetemp = ObjectImage.rectTransform.sizeDelta;
         PanelImageSizetemp = PanelImage.rectTransform.sizeDelta;
         ChangeVideoMode(false);
+        SetActiveInfo(false);
         ViewInfo(false);
     }
 
@@ -112,14 +112,15 @@ public class GameManager : MonoBehaviour
     {
         foreach (var newImage in eventArgs.added)
         {
-            trackedObject = newImage.gameObject.GetComponent<AR_Object>();
-            ARdata data = AR_Data.instance.list[newImage.referenceImage.name];
-            trackedObject.SetData(data);
-            managerUI.Scene3DButton.SetActive(trackedObject.arData.SceneName != "");
-            SetData(data);
-            managerUI.InfoPanel.gameObject.SetActive(true);
-            managerUI.MenuPanel.SetActive(true);
-            managerUI.ARFindPanel.SetActive(false);
+            newImage.gameObject.SetActive(true);
+            SetActiveInfo(true);
+            if (oldDataName != newImage.referenceImage.name)
+            {
+                oldDataName = newImage.referenceImage.name;
+                ARdata data = AR_Data.instance.list[newImage.referenceImage.name];
+                SetData(data);
+                newImage.gameObject.GetComponent<AR_Object>().SetData(data);
+            }
         }
         bool check = false;
         foreach (var updateImage in eventArgs.updated)
@@ -127,44 +128,36 @@ public class GameManager : MonoBehaviour
             switch (updateImage.trackingState)
             {
                 case TrackingState.None:
-                    if(trackedObject.gameObject == updateImage.gameObject)
-                    {
-                        trackedObject = null;
-                        updateImage.gameObject.SetActive(false);
-                    }
+                    updateImage.gameObject.SetActive(false);
                     break;
                 case TrackingState.Limited:
-                    if (trackedObject.gameObject == updateImage.gameObject)
-                    {
-                        trackedObject = null;
-                        updateImage.gameObject.SetActive(false);
-                    }
+                    updateImage.gameObject.SetActive(false);
                     break;
                 case TrackingState.Tracking:
-                    check = true;
-                    if (trackedObject == null)
+                    updateImage.gameObject.SetActive(true);
+                    if(oldDataName != updateImage.referenceImage.name)
                     {
-                        trackedObject = updateImage.gameObject.GetComponent<AR_Object>();
-                        managerUI.Scene3DButton.SetActive(trackedObject.arData.SceneName != "");
-                        SetData(trackedObject.arData);
+                        oldDataName = updateImage.referenceImage.name;
+                        ARdata data = AR_Data.instance.list[updateImage.referenceImage.name];
+                        SetData(data);
+                        updateImage.gameObject.GetComponent<AR_Object>().SetData(data);
                     }
+                    check = true;
                     break;
             }
         }
+        SetActiveInfo(check);
+        foreach (var removeImage in eventArgs.removed)
+        {
+            SetActiveInfo(false);
+        }
+    }
 
+    void SetActiveInfo(bool check)
+    {
         managerUI.InfoPanel.gameObject.SetActive(check);
         managerUI.MenuPanel.SetActive(check);
         managerUI.ARFindPanel.SetActive(!check);
-        if(!check)
-        {
-            managerUI.imagePanel.SetActive(false);
-        }
-
-        foreach (var removeImage in eventArgs.removed)
-        {
-            trackedObject = null;
-            removeImage.gameObject.SetActive(false);
-        }
     }
 
     void DisableTitle()
@@ -252,9 +245,9 @@ public class GameManager : MonoBehaviour
         arCamera.gameObject.SetActive(!check);
     }
 
-    public void SelectImage()
+    public void SelectImage(bool check)
     {
-        managerUI.imagePanel.SetActive(!managerUI.imagePanel.activeSelf);
+        managerUI.imagePanel.SetActive(check);
     }
     public void VideoPlay(bool check)
     {
