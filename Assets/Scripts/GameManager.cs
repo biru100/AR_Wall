@@ -46,8 +46,6 @@ public class GameManager : MonoBehaviour
     Image ObjectImage;
     [SerializeField]
     Image PanelImage;
-    [SerializeField]
-    GameObject VideoImage;
 
     AR_Object trackedObject;
 
@@ -75,7 +73,7 @@ public class GameManager : MonoBehaviour
             DisableTitle();
         }
         player = GetComponent<VideoPlayer>();
-        player.targetCamera = VideoCamera;
+        player.targetCamera = arCamera;
         ImageSizetemp = ObjectImage.rectTransform.sizeDelta;
         PanelImageSizetemp = PanelImage.rectTransform.sizeDelta;
         ChangeVideoMode(false);
@@ -173,7 +171,8 @@ public class GameManager : MonoBehaviour
         PanelImage.sprite = data.image;
         SetImagePixel(ObjectImage, ImageSizetemp.x, ImageSizetemp.y);
         SetImagePixel(PanelImage, PanelImageSizetemp.x, PanelImageSizetemp.y);
-        VideoImage.SetActive(data.clip != null);
+        player.clip = data.clip;
+        managerUI.Scene3DButton.SetActive(data.SceneName != "");
     }
 
     void SetImagePixel(Image image, float x, float y)
@@ -245,9 +244,9 @@ public class GameManager : MonoBehaviour
         arCamera.gameObject.SetActive(!check);
     }
 
-    public void SelectImage(bool check)
+    public void SelectImage()
     {
-        managerUI.imagePanel.SetActive(check);
+        managerUI.imagePanel.SetActive(!managerUI.imagePanel.activeSelf);
     }
     public void VideoPlay(bool check)
     {

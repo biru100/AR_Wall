@@ -18,15 +18,7 @@ public class AR_Object : MonoBehaviour
     Text descriptionText;
 
     [SerializeField]
-    GameObject videoImage;
-
-    [SerializeField]
-    Image ObjectImage;
-
-    [SerializeField]
     GameObject SceneLoadButton;
-
-    VideoPlayer player;
     string scenename;
     public ARdata arData { get; private set; }
 
@@ -34,31 +26,12 @@ public class AR_Object : MonoBehaviour
     private void Start()
     {
         canvas.worldCamera = Camera.main;
-        player = GameManager.instance.player;
-        player.targetCamera = GameManager.instance.arCamera;
     }
 
     public void SetData(ARdata data)
     {
-        if(player == null)
-        {
-            player = GameManager.instance.player;
-        }
+
         titleText.text = data.title + "\n- " + data.name;
-        //descriptionText.text = data.description;
-        //ObjectImage.sprite = data.image;
-        //scenename = data.SceneName;
-        //SceneLoadButton.SetActive(scenename != "");
-        if(data.clip != null)
-        {
-            GameManager.instance.player.clip = data.clip;
-        }
-        else
-        {
-            ObjectImage.gameObject.SetActive(true);
-            videoImage.SetActive(false);
-            data.clip = null;
-        }
         isSetData = true;
         arData = data;
     }
