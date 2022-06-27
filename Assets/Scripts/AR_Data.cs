@@ -63,7 +63,7 @@ public class AR_Data : MonoBehaviour
             Debug.Log(tempdata.clip);
             if(values[4] == "1")
             {
-                tempdata.SceneName = "Resources/Scenes3D/Scene_" + number;
+                tempdata.SceneName = "Scene_" + number;
             }
             else
             {
